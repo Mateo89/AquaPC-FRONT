@@ -1,0 +1,30 @@
+<div class="sidebar-inner c-overflow">
+    <div class="profile-menu">
+        <a href="" toggle-submenu>
+            <div class="profile-info">USTAWIENIA<i class="zmdi"></i></div>
+        </a>
+    </div>
+    <ul class="main-menu">
+        <li data-ui-sref-active="active"><a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-home" ></i> Home</a></li>
+        <li class="sub-menu" data-ng-class="{ 'active toggled': mactrl.$state.includes('headers') }"><a href="" toggle-submenu><i class="zmdi zmdi-sun"></i> Lampy</a>
+            <ul>
+                <li><a data-ui-sref-active="active" ui-sref="lamp1" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-collection-item-1"></i> Lampa 1</a></li>
+                <li><a data-ui-sref-active="active" ui-sref="lamp2" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-collection-item-2"></i> Lampa 2</a></li>
+            </ul>
+        </li>
+        <li data-ui-sref-active="active"><a data-ui-sref="heaters" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-fire"></i> Grzałki</a></li>
+        <li class="sub-menu" data-ng-class="{ 'active toggled': mactrl.$state.includes('widgets') }"><a href="" toggle-submenu><i class="zmdi zmdi-gas-station"></i> Dozownik</a>
+            <ul>
+                <li><a data-ui-sref-active="active" data-ui-sref="pomp1" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-collection-item-1"></i> Pompa 1</a></li>
+                <li><a data-ui-sref-active="active" data-ui-sref="pomp2" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-collection-item-2"></i> Pompa 2</a></li>
+                <li><a data-ui-sref-active="active" data-ui-sref="pomp3" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-collection-item-3"></i> Pompa 3</a></li>
+                <li><a data-ui-sref-active="active" data-ui-sref="pomp4" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-collection-item-4"></i> Pompa 4</a></li>
+                <li><a data-ui-sref-active="active" data-ui-sref="pomp5" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-collection-item-5"></i> Pompa 5</a></li>
+                <li><a data-ui-sref-active="active" data-ui-sref="pomp6" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-collection-item-6"></i> Pompa 6</a></li>
+            </ul>
+        </li>
+        <li data-ui-sref-active="active"><a data-ui-sref="filters" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-toys"></i> Filtry</a></li>
+        <li data-ui-sref-active="active"><a data-ui-sref="co2" data-ng-click="mactrl.sidebarStat($event)">CO2</a></li>
+        <li data-ui-sref-active="active"><a data-ui-sref="o2" data-ng-click="mactrl.sidebarStat($event)">O2</a></li>
+    </ul>
+</div>

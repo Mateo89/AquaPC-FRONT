@@ -1,0 +1,103 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'template/header.html'"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'template/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+    <section id="content" ng-controller="co2Ctrl">
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header m-r-30">
+                    <h2 class="p-t-5">USTAWIENIA</h2>
+                    <ul class="actions">
+                        <li class="p-t-10">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts1" class="ts-label f-15">Wł/Wył</label>
+                                <input id="ts1" type="checkbox" hidden="hidden" ng-model="modelState.on" ng-click="">
+                                <label for="ts1" class="ts-helper"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 p-t-20" style="padding-bottom: 35px;">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts2" class="ts-label f-15">Wylączenie podczas wymiany wody</label>
+                                <input id="ts2" type="checkbox" hidden="hidden" ng-model="modelState.water_change_off">
+                                <label for="ts2" class="ts-helper"></label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 p-t-20">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts3" class="ts-label f-15">24H</label>
+                                <input id="ts3" type="checkbox" hidden="hidden" ng-model="modelState.full_day">
+                                <label for="ts3" class="ts-helper"></label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 p-t-20">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts3" class="ts-label f-15">Zwiarz z filtrem</label>
+                                <input id="ts3" type="checkbox" hidden="hidden" ng-model="modelState.bind_with_filter">
+                                <label for="ts3" class="ts-helper"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" ng-show="modelState.on && !modelState.full_day">
+                <div class="card-header">
+                    <h2 class="p-t-5">CZASY</h2>
+                </div>
+                <div class="card-body card-padding">
+                    <div>
+                        <div class="row" ng-repeat="day in modelTimes">
+                            <div class="col-md-2">
+                                <div class="checkbox m-b-15">
+                                    <label>
+                                        <input type="checkbox" ng-model="day.on">
+                                        <i class="input-helper"></i> {{day.name}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div ng-show="day.on">
+                                <div class="col-xs-6 col-sm-3">
+                                    <input placeholder="Time" ng-model="day.from" class="f-15 form-control bgm-white">
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <input placeholder="Time" ng-model="day.to" class="f-15 form-control bgm-white">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="resetTimes()">RESET CZASOW</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="p-t-20">AKCJE CO2</h2>
+                </div>
+                <div class="card-padding card-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="reset()">RESET USTAWIEN</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="save()">ZAPISZ USTAWIENIA</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</section>
+
+<footer id="footer" data-ng-include="'template/footer.html'"></footer>

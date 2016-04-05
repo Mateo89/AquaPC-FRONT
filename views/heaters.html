@@ -1,0 +1,70 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'template/header.html'"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'template/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+    <section id="content" ng-controller="heaterCtrl">
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header m-r-30">
+                    <h2 class="p-t-5">USTAWIENIA</h2>
+                    <ul class="actions">
+                        <li class="p-t-10">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts1" class="ts-label f-15">Wł/Wył</label>
+                                <input id="ts1" type="checkbox" hidden="hidden" ng-model="modelHeaterState.on" ng-click="">
+                                <label for="ts1" class="ts-helper"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body card-padding">
+                    <div class="row" ng-show="modelHeaterState.on">
+                        
+                        <div class="col-xs-12 col-sm-4 p-t-20" style="padding-bottom: 35px;">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts2" class="ts-label f-15">Włączenie podczas wymiany wody</label>
+                                <input id="ts2" type="checkbox" hidden="hidden" ng-model="modelHeaterState.water_change_off">
+                                <label for="ts2" class="ts-helper"></label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="form-group fg-line">
+                                <label>TEMPERATURA WODY</label>
+                                <input type="text" class="form-control ng-isolate-scope bgm-none" placeholder="TEMPERATUR WODA" ng-model="modeWaterlState.temp" data-input-mask="{mask: '00.0'}" maxlength="2" autocomplete="off">
+                            </div>                     
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="form-group fg-line">
+                                <label>TEMPERATURA DELTA</label>
+                                <input type="text" class="form-control ng-isolate-scope bgm-none" placeholder="TEMPERATUR DELTA" ng-model="modelHeaterState.delta" autocomplete="off">
+                            </div>                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="p-t-20">AKCJE GRZALKI</h2>
+                </div>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="reset()">RESET</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="save()">ZAPISZ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</section>
+
+<footer id="footer" data-ng-include="'template/footer.html'"></footer>

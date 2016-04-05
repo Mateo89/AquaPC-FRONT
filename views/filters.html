@@ -1,0 +1,103 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'template/header.html'"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'template/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+    <section id="content" ng-controller="filterCtrl">
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header m-r-30">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-lg bgm-none" placeholde="Nazwa" ng-model="modelStateFilter1.name">
+                    </div>
+                    <ul class="actions">
+                        <li class="p-t-10">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts1" class="ts-label f-15">Wl/Wyl</label>
+                                <input id="ts1" type="checkbox" hidden="hidden" ng-model="modelStateFilter1.on">
+                                <label for="ts1" class="ts-helper"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-5 p-t-20" style="padding-bottom: 35px;">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts2" class="ts-label f-15">Wylaczenie podczas wymiany wody</label>
+                                <input id="ts2" type="checkbox" hidden="hidden" ng-model="modelStateFilter1.water_change_off">
+                                <label for="ts2" class="ts-helper"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="p-t-20">AKCJE {{modelStateFilter1.name}}</h2>
+                </div>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="resetFilter1()">RESET</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="saveFilter1()">ZAPISZ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="card">
+                <div class="card-header m-r-30">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-lg bgm-none" placeholde="Nazwa" ng-model="modelStateFilter2.name">
+                    </div>
+                    <ul class="actions">
+                        <li class="p-t-10">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts3" class="ts-label f-15">Wl/Wyl</label>
+                                <input id="ts3" type="checkbox" hidden="hidden" ng-model="modelStateFilter2.on">
+                                <label for="ts3" class="ts-helper"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-5 p-t-20" style="padding-bottom: 35px;">
+                            <div class="toggle-switch" data-ts-color="red">
+                                <label for="ts4" class="ts-label f-15">Wylaczenie podczas wymiany wody</label>
+                                <input id="ts4" type="checkbox" hidden="hidden" ng-model="modelStateFilter2.water_change_off">
+                                <label for="ts4" class="ts-helper"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="p-t-20">AKCJE {{modelStateFilter2.name}}</h2>
+                </div>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="resetFilter2()">RESET</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 m-t-10">
+                            <button class="btn btn-primary btn-block waves-effect" ng-click="saveFilter2()">ZAPISZ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+</section>
+
+<footer id="footer" data-ng-include="'template/footer.html'"></footer>

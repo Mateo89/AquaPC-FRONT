@@ -1,0 +1,176 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'template/header.html'"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'template/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+    <section id="content" ng-controller="homeCtrl as home">
+
+        <div class="container">
+            <div class="block-header">
+                <h2>PARAMETRY</h2>
+
+                <ul class="actions">
+                    <li>
+                        <a href="" ng-click="refresParameters()">
+                            <i class="zmdi zmdi-refresh" ></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row m-t-20 m-b-25">
+                <div class="col-md-6">
+                    <dir class="p-20 temp-tile z-depth-1" ng-class="{false:'bgm-blue', true:'bgm-red'}[waterTemp.warning]">
+                        <div class="c-white m-b-5">Temeratura Wody</div>
+                        <h2 class="m-0 c-white f-300 text-center">{{waterTemp.temp}} &#186C</h2>
+                    </dir>
+                </div>
+                <div class="col-md-6">
+                    <dir class="bgm-blue p-20 temp-tile z-depth-1">
+                        <div class="c-white m-b-5">Temeratura Otoczenia</div>
+                        <h2 class="m-0 c-white f-300 text-center">{{airTemp.temp}} &#186C</h2>
+                    </dir>
+                </div>
+                <div class="col-md-6">
+                    <dir class="p-20 temp-tile z-depth-1" ng-class="{false:'bgm-blue', true:'bgm-red'}[lampTemp.warning]">
+                        <div class="c-white m-b-5">Temeratura Lampy 1</div>
+                        <h2 class="m-0 c-white f-300 text-center">{{lampTemp.temp}} &#186C</h2>
+                    </dir>
+                </div>
+                <div class="col-md-6">
+                    <dir class="p-20 temp-tile z-depth-1" ng-class="{false:'bgm-green', true:'bgm-red'}[phValue.warning]">
+                        <div class="c-white m-b-5">pH Wody</div>
+                        <h2 class="m-0 c-white f-300 text-center">{{phValue.value}} pH</h2>
+                    </dir>
+                </div>
+            </div>
+
+
+            <div>
+                <div class="row p-20"></div>
+
+                <div class="block-header">
+                    <h2>STAN DOZOWNIKA</h2>
+
+                    <ul class="actions">
+                        <li>
+                            <a href="" ng-click="refreshBottle()">
+                                <i class="zmdi zmdi-refresh" ></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6" ng-repeat="item in bottleStatus">
+                        <div id="pie-charts" class="dash-widget-item" style="min-height: 0px">
+                            <div class="z-depth-1" ng-class="{ true:'bgm-red',false:'bgm-lightblue'}[item.alert]">
+                                <div class="dash-widget-header">
+                                    <div class="dash-widget-title f-20" ng-bind="item.name"></div>
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <div class="text-center p-20 m-t-25">
+                                    <div class="easy-pie main-pie" data-percent="item.percent" data-easypie-chart>
+                                        <div class="percent" ng-bind="item.percent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row p-20"></div>
+
+
+            <!-- PRZEŁĄCZNIKI -->
+            <div class="block-header">
+                <h2>PRZEŁĄCZNIKI</h2>
+
+                <ul class="actions">
+                    <li>
+                        <a href="" ng-click="unlockSwitches()">
+                            <i class="zmdi zmdi-lock-open"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="refreshSwitches()">
+                            <i class="zmdi zmdi-refresh"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row m-t-20 m-b-25">
+                <div class="col-sm-3" ng-repeat="item in switchList">
+                    <div class="card">
+                        <div class="card-header ch-alt">
+                            <h2 ng-bind="item.name"></h2>
+                            <ul class="actions">
+                                <li class="p-r-10" ng-show="item.override">
+                                    <a href="" data-ng-click="resetSwitchConfirm(item)">
+                                        <i class="zmdi zmdi-lock-open"></i>
+                                    </a>
+                                </li>
+                                <li class="p-t-10">
+                                    <div class="toggle-switch" data-ts-color="red">
+                                        <input id="ts{{$index}}" type="checkbox" hidden="hidden" ng-checked="item.on" ng-click="toggleSwitch(item)">
+                                        <label for="ts{{$index}}" class="ts-helper"></label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body card-padding" ng-class="{ true:'bgm-red',false:'bgm-blue'}[item.override]">
+                            <h2 class="m-0 c-white f-300 text-center">
+                                <img ng-src="{{item.img}}" height="70px">
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row p-20"></div>
+
+
+            <!-- LOGI -->
+            <div class="block-header">
+                <h2>LOGI</h2>
+                <ul class="actions">
+                    <li>
+                        <a href="" ng-click="removeLogs()">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="refreshLogs()">
+                            <i class="zmdi zmdi-refresh"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="card z-depth-1">
+                    <div class="card-body table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-2">Data</th>
+                                    <th>Wiadomość</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="log in logsList">
+                                    <td ng-bind="log.date"></td>
+                                    <td ng-bind="log.message"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<footer id="footer" data-ng-include="'template/footer.html'"></footer>
