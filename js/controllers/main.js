@@ -244,7 +244,7 @@ materialAdmin
     }
     
     $scope.addState = function(day){
-        day.states.push({time: '10:00',percent:0})
+        day.states.push({time: '10:00',percent:[0,0,0,0]})
     }
     
     $scope.removeState = function(day,state){
