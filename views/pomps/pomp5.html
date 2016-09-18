@@ -64,6 +64,24 @@
             </div>
 
 
+            <div class="card" ng-show="modelState.connected_pomp_list.length">
+                <div class="card-header">
+                    <h2 class="p-t-20">TYGODNIOWE DAWKI Z POŁĄCZONYCH NAWOZOW</h2>
+                </div>
+                <div class="card-padding card-body">
+
+                    <div class="row" ng-repeat="pomp in modelState.connected_pomp_list">
+                        <div class="col-xs-8 col-sm-2">
+                            <h4>{{pomp.name}}</h4>
+                        </div>
+                        <div class="col-xs-5 col-sm-5">
+                            <h4>{{pomp.weekly_ppm_dose}} ppm/week</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="card">
                 <div class="card-header">
                     <h2 class="p-t-20">STAN POMPY</h2>
@@ -98,6 +116,20 @@
                             <div class="form-group fg-line">
                                 <label>PROCENT</label>
                                 <input type="number" disabled class="form-control ng-isolate-scope bgm-none" placeholder="PROCENT" ng-model="modelState.percent">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 m-b-20">
+                            <div class="form-group fg-line">
+                                <label>POLACZONA POMPA</label>
+                                <input type="number" class="form-control ng-isolate-scope bgm-none" ng-model="modelState.connect_pomp" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-sm-2 m-b-20">
+                            <div class="form-group fg-line">
+                                <label>POLACZONA DAWKA PPM</label>
+                                <input type="number" class="form-control ng-isolate-scope bgm-none" ng-model="modelState.connect_ppm_per_ppm" autocomplete="off">
                             </div>
                         </div>
                     </div>
