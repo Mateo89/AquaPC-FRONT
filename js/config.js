@@ -75,7 +75,11 @@ materialAdmin
             //------------------------------
             // POMPY
             //------------------------------
-         
+            .state ('summary', {
+                url: '/pomp/summary',
+                templateUrl: 'views/pomps/summary.html'
+            })
+
             .state ('pomp1', {
                 url: '/pomp/1',
                 templateUrl: 'views/pomps/pomp1.html'

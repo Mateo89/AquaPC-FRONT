@@ -309,6 +309,12 @@ materialAdmin
     }
 })
 
+.controller('pompSummaryCtrl', function($interval, $scope, pompsSummaryService){
+    pompsSummaryService.getPompsSummary().then(function(data){
+        $scope.pompsSummary = data;
+    })
+})
+
 .controller('pompCtrl', function ($scope, pompService) {
 
     $scope.id = 0;

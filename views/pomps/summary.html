@@ -1,0 +1,42 @@
+<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'template/header.html'"></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include="'template/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+    <section id="content" ng-controller="pompSummaryCtrl">
+
+        <div class="container">
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="p-t-20">PODSUMOWANIE</h2>
+                </div>
+                <div class="card-body card-padding">
+                    <div>
+                        <div class="row">
+                            <div class="col-sm-4 text-center"><h4>NAZWA</h4></div>
+                            <div class="col-sm-3 text-center"><h4>USTAWIENIA</h4></div>
+                            <div class="col-sm-3 text-center"><h4>DODATKOWO</h4></div>
+                            <div class="col-sm-2 text-center"><h4>SUMA</h4></div>
+                        </div>
+                        <div class="row p-t-10" ng-repeat="pomp in pompsSummary">
+                            <div class="col-xs-4 col-sm-4 text-center">
+                                <a data-ui-sref-active="active" data-ui-sref="pomp{{pomp.id}}">{{pomp.name}}</a>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 text-center">
+                                {{pomp.dose}} ppm
+                            </div>
+                            <div class="col-xs-3 col-sm-3 text-center">
+                                {{pomp.add_dose}} ppm
+                            </div>
+                            <div class="col-xs-2 col-sm-2 text-center">
+                                {{pomp.sum}} ppm
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<footer id="footer" data-ng-include="'template/footer.html'"></footer>
